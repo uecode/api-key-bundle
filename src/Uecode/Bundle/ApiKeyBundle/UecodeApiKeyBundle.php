@@ -6,6 +6,7 @@
  */
 namespace Uecode\Bundle\ApiKeyBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Uecode\Bundle\ApiKeyBundle\DependencyInjection\Security\Factory\ApiKeyFactory;
 use Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension;
