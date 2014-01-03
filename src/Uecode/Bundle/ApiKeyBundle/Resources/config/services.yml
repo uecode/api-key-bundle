@@ -1,0 +1,16 @@
+parameters:
+    uecode.api_key.provider.user_provider.class: Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\UserProvider
+    uecode.api_key.provider.api_key.class:       Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\ApiKeyProvider
+    uecode.api_key.listener.api_key.class:       Uecode\Bundle\ApiKeyBundle\Security\Firewall\ApiKeyListener
+
+services:
+    uecode.api_key.provider.user_provider:
+        class: %uecode.api_key.provider.user_provider.class%
+        arguments: [@fos_user.user_manager]
+    uecode.api_key.provider.api_key:
+        class: %uecode.api_key.provider.api_key.class%
+        arguments: [""]
+    uecode.api_key.listener.api_key:
+        class: %uecode.security.listener.api_key.class%
+        arguments: [@security.context, @security.authentication.manager]
+
