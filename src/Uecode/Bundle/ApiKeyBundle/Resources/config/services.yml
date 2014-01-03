@@ -11,6 +11,6 @@ services:
         class: %uecode.api_key.provider.api_key.class%
         arguments: [""]
     uecode.api_key.listener.api_key:
-        class: %uecode.security.listener.api_key.class%
+        class: %uecode.api_key.listener.api_key.class%
         arguments: [@security.context, @security.authentication.manager]
 
