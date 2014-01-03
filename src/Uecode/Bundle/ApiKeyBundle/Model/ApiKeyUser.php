@@ -4,14 +4,20 @@ namespace Uecode\Bundle\ApiKeyBundle\Model;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping\MappedSuperclass;
 
+/**
+ * @MappedSuperclass
+ */
 class ApiKeyUser extends BaseUser implements UserInterface, AdvancedUserInterface, BaseUserInterface
 {
+    /**
+     * @ORM\Column(name="api_key", type="string", length=255, nullable=true)
+     */
     private $apiKey;
 
     public function __construct()
