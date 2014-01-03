@@ -1,4 +1,4 @@
-api-key-bundle
-==============
+ApiKey Bundle
+=============
 
-Provides an avenue to use ApiKey authentication with Symfony. Requires FOSUserBundle
+Creates an avenue for using ApiKey authentication for Symfony2. Requires FOSUserBundle.
