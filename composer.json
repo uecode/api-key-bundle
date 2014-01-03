@@ -1,0 +1,15 @@
+{
+    "name": "uecode/api-key-bundle",
+    "description": "Creates an avenue for using ApiKey authentication for Symfony2. Requires FOSUserBundle.",
+    "require": {
+        "php": ">=5.3.0"
+        "symfony/symfony": ">=2.3.0",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
+    },
+    "authors": [
+        {
+            "name": "Aaron Scherer",
+            "email": "aequasi@gmail.com"
+        }
+    ]
+}
