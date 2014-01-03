@@ -1,6 +1,6 @@
 <?php
 
-namespace Ue\Bundle\ApiKeyBundle\Model;
+namespace Uecode\Bundle\ApiKeyBundle\Model;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
