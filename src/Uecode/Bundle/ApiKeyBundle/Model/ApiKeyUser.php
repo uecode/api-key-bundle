@@ -18,7 +18,7 @@ class ApiKeyUser extends BaseUser implements UserInterface, AdvancedUserInterfac
     /**
      * @ORM\Column(name="api_key", type="string", length=255, nullable=true)
      */
-    private $apiKey;
+    protected $apiKey;
 
     public function __construct()
     {
