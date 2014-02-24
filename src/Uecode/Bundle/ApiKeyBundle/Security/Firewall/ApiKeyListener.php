@@ -1,9 +1,4 @@
 <?php
-/**
- * @author    Aaron Scherer
- * @date      1/2/14
- * @copyright Underground Elephant
- */
 
 namespace Uecode\Bundle\ApiKeyBundle\Security\Firewall;
 
@@ -13,12 +8,13 @@ use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterfac
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
-use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\UserProvider;
 use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
 
+/**
+ * @author Aaron Scherer <aequasi@gmail.com>
+ */
 class ApiKeyListener implements ListenerInterface
 {
-
     /**
      * @var SecurityContextInterface
      */

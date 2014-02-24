@@ -1,19 +1,15 @@
 <?php
-/**
- * @author    Aaron Scherer
- * @date      1/2/14
- * @copyright Underground Elephant
- */
-
 namespace Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider;
 
 use FOS\UserBundle\Security\UserProvider AS FOSUserProvider;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
+/**
+ * @author Aaron Scherer <aequasi@gmail.com>
+ */
 class UserProvider extends FOSUserProvider
 {
-
     /**
      * @var bool Stateless Authentication?
      */
