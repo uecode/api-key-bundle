@@ -1,9 +1,4 @@
 <?php
-/**
- * @author    Aaron Scherer
- * @date      1/2/14
- * @copyright Underground Elephant
- */
 
 namespace Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider;
 
@@ -12,12 +7,14 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\ChainUserProvider;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
 use FOS\UserBundle\Model\UserInterface;
+use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
 
+/**
+ * @author Aaron Scherer <aequasi@gmail.com>
+ */
 class ApiKeyProvider implements AuthenticationProviderInterface
 {
-
     /**
      * @var UserProviderInterface
      */
@@ -60,7 +57,7 @@ class ApiKeyProvider implements AuthenticationProviderInterface
      */
     private function doAuth(UserProviderInterface $provider, TokenInterface $token)
     {
-        if(!method_exists($provider, 'loadUserByApiKey')) {
+        if (!method_exists($provider, 'loadUserByApiKey')) {
             return false;
         }
 

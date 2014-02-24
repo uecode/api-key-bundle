@@ -1,9 +1,4 @@
 <?php
-/**
- * @author    Aaron Scherer
- * @date      1/2/14
- * @copyright Underground Elephant
- */
 
 namespace Uecode\Bundle\ApiKeyBundle\DependencyInjection\Security\Factory;
 
@@ -13,9 +8,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * @author Aaron Scherer <aequasi@gmail.com>
+ */
 class ApiKeyFactory implements SecurityFactoryInterface
 {
-
     public function create(ContainerBuilder $container, $id, $config, $userProvider, $defaultEntryPoint)
     {
         $providerId = 'security.authentication.provider.api_key.' . $id;
