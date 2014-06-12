@@ -40,7 +40,10 @@ class ApiKeyListener implements ListenerInterface
     {
         $request = $event->getRequest();
         if (!$request->query->has('api_key')) {
-            return;
+            $response = new Response();
+            $response->setStatusCode(401);
+            $event->setResponse($response);
+            return ;
         }
 
         $token = new ApiKeyUserToken();
