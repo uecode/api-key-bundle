@@ -24,7 +24,7 @@ class UserProvider extends FOSUserProvider
     {
         $this->stateless = true;
 
-        return $this->userManager->findUserBy(['apiKey' => $apiKey]);
+        return $this->userManager->findUserBy(array('apiKey' => $apiKey));
     }
 
     /**
