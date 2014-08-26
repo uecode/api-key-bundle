@@ -4,9 +4,6 @@ namespace Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token;
 
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 
-/**
- * @author Aaron Scherer <aequasi@gmail.com>
- */
 class ApiKeyUserToken extends AbstractToken
 {
     /**
