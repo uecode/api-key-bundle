@@ -10,9 +10,6 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
 
-/**
- * @author Aaron Scherer <aequasi@gmail.com>
- */
 class ApiKeyListener implements ListenerInterface
 {
     /**

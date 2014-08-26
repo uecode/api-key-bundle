@@ -10,9 +10,6 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use FOS\UserBundle\Model\UserInterface;
 use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
 
-/**
- * @author Aaron Scherer <aequasi@gmail.com>
- */
 class ApiKeyProvider implements AuthenticationProviderInterface
 {
     /**

@@ -7,9 +7,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension;
 use Uecode\Bundle\ApiKeyBundle\DependencyInjection\Security\Factory\ApiKeyFactory;
 
-/**
- * @author Aaron Scherer <aequasi@gmail.com>
- */
 class UecodeApiKeyBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
