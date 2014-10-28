@@ -47,7 +47,8 @@ class ApiKeyListener implements ListenerInterface
         }
 
         $token = new ApiKeyUserToken();
-        $token->setApiKey($request->query->get('api_key'));
+        $apiKey = $request->headers->get('X-Api-Key', $request->query->get('api_key'));
+        $token->setApiKey($apiKey);
 
         try {
             $authToken = $this->authenticationManager->authenticate($token);
@@ -56,7 +57,7 @@ class ApiKeyListener implements ListenerInterface
             return;
         } catch (AuthenticationException $failed) {
             $token = $this->securityContext->getToken();
-            if ($token instanceof ApiKeyUserToken && $token->getCredentials() == $request->query->get('apiKey')) {
+            if ($token instanceof ApiKeyUserToken && $token->getCredentials() == $apiKey) {
                 $this->securityContext->setToken(null);
             }
 
