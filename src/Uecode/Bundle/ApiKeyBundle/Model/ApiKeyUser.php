@@ -47,12 +47,7 @@ class ApiKeyUser extends BaseUser implements UserInterface, AdvancedUserInterfac
      */
     public function generateApiKey()
     {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $apikey     = '';
-        for ($i = 0; $i < 64; $i++) {
-            $apikey .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        $apikey = base64_encode(sha1(uniqid('ue' . rand(rand(), rand())) . $apikey));
+        $apikey = hash('sha256', uniqid() . time() . rand());
         $this->apiKey = $apikey;
     }
 }
