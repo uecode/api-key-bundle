@@ -22,6 +22,14 @@ class UecodeApiKeyExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yml');
+
+        $this->defineKeyExtractor($config, $container);
+    }
+
+    private function defineKeyExtractor(array $config, ContainerBuilder $container)
+    {
+        $container->setParameter('uecode.api_key.parameter_name', $config['parameter_name']);
+        $container->setAlias('uecode.api_key.extractor', 'uecode.api_key.extractor.'.$config['delivery']);
     }
 }
 

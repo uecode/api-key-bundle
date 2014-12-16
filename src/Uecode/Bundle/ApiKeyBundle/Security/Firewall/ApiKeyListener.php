@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
+use Uecode\Bundle\ApiKeyBundle\Extractor\KeyExtractor;
 
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
@@ -25,10 +26,16 @@ class ApiKeyListener implements ListenerInterface
      */
     protected $authenticationManager;
 
-    public function __construct(SecurityContextInterface $context, AuthenticationManagerInterface $manager)
+    /**
+     * @var KeyExtractor
+     */
+    protected $keyExtractor;
+
+    public function __construct(SecurityContextInterface $context, AuthenticationManagerInterface $manager, KeyExtractor $keyExtractor)
     {
         $this->securityContext       = $context;
         $this->authenticationManager = $manager;
+        $this->keyExtractor          = $keyExtractor;
     }
 
     /**
@@ -39,15 +46,18 @@ class ApiKeyListener implements ListenerInterface
     public function handle(GetResponseEvent $event)
     {
         $request = $event->getRequest();
-        if (!$request->query->has('api_key')) {
+
+        if (!$this->keyExtractor->hasKey($request)) {
             $response = new Response();
             $response->setStatusCode(401);
             $event->setResponse($response);
             return ;
         }
 
+        $apiKey = $this->keyExtractor->extractKey($request);
+
         $token = new ApiKeyUserToken();
-        $token->setApiKey($request->query->get('api_key'));
+        $token->setApiKey($apiKey);
 
         try {
             $authToken = $this->authenticationManager->authenticate($token);
@@ -56,7 +66,7 @@ class ApiKeyListener implements ListenerInterface
             return;
         } catch (AuthenticationException $failed) {
             $token = $this->securityContext->getToken();
-            if ($token instanceof ApiKeyUserToken && $token->getCredentials() == $request->query->get('apiKey')) {
+            if ($token instanceof ApiKeyUserToken && $token->getCredentials() == $apiKey) {
                 $this->securityContext->setToken(null);
             }
 
