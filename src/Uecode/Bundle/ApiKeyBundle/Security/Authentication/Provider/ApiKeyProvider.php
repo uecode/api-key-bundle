@@ -58,7 +58,7 @@ class ApiKeyProvider implements AuthenticationProviderInterface
      * @return bool|ApiKeyUserToken
      * @throws AuthenticationException
      */
-    private function doAuth(UserProviderInterface $provider, TokenInterface $token)
+    protected function doAuth(UserProviderInterface $provider, TokenInterface $token)
     {
         if (!method_exists($provider, 'loadUserByApiKey')) {
             return false;
