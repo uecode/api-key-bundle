@@ -27,6 +27,15 @@ public function registerBundles()
     );
 }
 ```
+#### Configuration
+You can change how the API key should be delivered and the name of the parameter its sent as.  By default, this bundle looks for `api_key` in the query string.
+
+```yaml
+uecode_api_key:
+    delivery: query #or header
+    parameter: some_value # defaults to `api_key`
+```
+
 #### Entities
 
 Assuming you already have a `User` class that extends the `FOSUserBundle`'s base user model,
