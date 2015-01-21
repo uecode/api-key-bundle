@@ -33,7 +33,7 @@ You can change how the API key should be delivered and the name of the parameter
 ```yaml
 uecode_api_key:
     delivery: query #or header
-    parameter: some_value # defaults to `api_key`
+    parameter_name: some_value # defaults to `api_key`
 ```
 
 #### Entities
