@@ -39,7 +39,7 @@ class ApiKeyListener implements ListenerInterface
     public function handle(GetResponseEvent $event)
     {
         $request = $event->getRequest();
-        $apiKey = $request->headers->get('X-Api-Key', $request->query->get('api_key'));
+        $apiKey = $request->headers->get('Authorization', $request->query->get('api_key'));
         if (!$apiKey) {
             $response = new Response();
             $response->setStatusCode(401);
