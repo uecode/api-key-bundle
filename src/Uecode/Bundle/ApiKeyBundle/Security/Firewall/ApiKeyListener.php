@@ -2,6 +2,8 @@
 
 namespace Uecode\Bundle\ApiKeyBundle\Security\Firewall;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
@@ -64,9 +66,19 @@ class ApiKeyListener implements ListenerInterface
             $message = $failed->getMessage();
         }
 
-        $response = new Response();
-        $response->setContent($message);
+        if ($this->isJsonRequest($request)) {
+            $response = new JsonResponse(array('error' => $message));
+        } else {
+            $response = new Response();
+            $response->setContent($message);
+        }
+
         $response->setStatusCode(403);
         $event->setResponse($response);
+    }
+
+    private function isJsonRequest(Request $request)
+    {
+        return 'json' === $request->getRequestFormat();
     }
 }
