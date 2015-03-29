@@ -39,7 +39,7 @@ class ApiKeyListener implements ListenerInterface
     {
         $this->securityContext       = $context;
         $this->authenticationManager = $manager;
-        $this->forceApiKey = true;
+        $this->forceApiKey = $forceApiKey;
     }
 
     /**
