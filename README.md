@@ -68,3 +68,13 @@ security:
             stateless: true
 
 ```
+
+#### Public resources
+
+If you want to allow public resources within the firewall's realm for which the clients do not need
+to provide an API key, then you can configure `force_api_key` to false in your config.yml.
+
+```yml
+uecode_api_key:
+    force_api_key: false
+```

@@ -22,6 +22,9 @@ class UecodeApiKeyExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yml');
+
+        $container->getDefinition('uecode.api_key.listener.api_key')
+            ->addArgument($config['force_api_key']);
     }
 }
 

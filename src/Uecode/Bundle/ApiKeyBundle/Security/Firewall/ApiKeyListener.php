@@ -27,10 +27,19 @@ class ApiKeyListener implements ListenerInterface
      */
     protected $authenticationManager;
 
-    public function __construct(SecurityContextInterface $context, AuthenticationManagerInterface $manager)
+    /**
+     * whether or not every request must have an API key
+     * set to false if you want to allow requests to public resources
+     *
+     * @var bool
+     */
+    private $forceApiKey;
+
+    public function __construct(SecurityContextInterface $context, AuthenticationManagerInterface $manager, $forceApiKey = true)
     {
         $this->securityContext       = $context;
         $this->authenticationManager = $manager;
+        $this->forceApiKey = true;
     }
 
     /**
@@ -43,9 +52,11 @@ class ApiKeyListener implements ListenerInterface
         $request = $event->getRequest();
         $apiKey = $request->headers->get('Authorization', $request->query->get('api_key'));
         if (!$apiKey) {
-            $response = new Response();
-            $response->setStatusCode(401);
-            $event->setResponse($response);
+            if (true === $this->forceApiKey) {
+                $response = new Response();
+                $response->setStatusCode(401);
+                $event->setResponse($response);
+            }
             return ;
         }
 
