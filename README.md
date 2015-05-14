@@ -75,5 +75,6 @@ security:
             pattern: ^/api/*
             api_key: true
             stateless: true
+            provider: db # Required if you have multiple providers and firewalls
 
 ```
