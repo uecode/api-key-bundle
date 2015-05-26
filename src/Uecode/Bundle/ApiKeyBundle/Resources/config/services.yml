@@ -5,7 +5,9 @@ parameters:
 
     uecode.api_key.extractor.query.class:        Uecode\Bundle\ApiKeyBundle\Extractor\QueryExtractor
     uecode.api_key.extractor.header.class:       Uecode\Bundle\ApiKeyBundle\Extractor\HeaderExtractor
-
+    
+    uecode.api_key.generator.class:              Uecode\Bundle\ApiKeyBundle\Util\ApiKeyGenerator
+    
 services:
     uecode.api_key.provider.user_provider:
         class: %uecode.api_key.provider.user_provider.class%
@@ -24,4 +26,7 @@ services:
     uecode.api_key.extractor.header:
         class: %uecode.api_key.extractor.header.class%
         arguments: [%uecode.api_key.parameter_name%]
+        public: false
+    uecode.api_key.generator:
+        class: %uecode.api_key.generator.class%
         public: false

@@ -6,6 +6,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Uecode\Bundle\ApiKeyBundle\Util\ApiKeyGenerator;
 
 class ApiKeyUser extends BaseUser implements UserInterface, AdvancedUserInterface, BaseUserInterface
 {
@@ -13,12 +14,12 @@ class ApiKeyUser extends BaseUser implements UserInterface, AdvancedUserInterfac
 
     public function __construct()
     {
-        $this->generateApiKey();
         parent::__construct();
+        $this->setApiKey(ApiKeyGenerator::generate());
     }
 
     /**
-     * @param mixed $apiKey
+     * @param string $apiKey
      */
     public function setApiKey($apiKey)
     {
@@ -26,24 +27,10 @@ class ApiKeyUser extends BaseUser implements UserInterface, AdvancedUserInterfac
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getApiKey()
     {
         return $this->apiKey;
-    }
-
-    /**
-     * Generates an API Key
-     */
-    public function generateApiKey()
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $apikey     = '';
-        for ($i = 0; $i < 64; $i++) {
-            $apikey .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        $apikey = base64_encode(sha1(uniqid('ue' . rand(rand(), rand())) . $apikey));
-        $this->apiKey = $apikey;
     }
 }

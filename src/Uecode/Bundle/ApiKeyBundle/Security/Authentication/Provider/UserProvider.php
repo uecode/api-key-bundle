@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
  */
-class UserProvider extends FOSUserProvider
+class UserProvider extends FOSUserProvider implements ApiKeyUserProviderInterface
 {
     /**
      * @var bool Stateless Authentication?
@@ -16,9 +16,7 @@ class UserProvider extends FOSUserProvider
     private $stateless = false;
 
     /**
-     * @param $apiKey
-     *
-     * @return UserInterface
+     * {@inheritdoc}
      */
     public function loadUserByApiKey($apiKey)
     {

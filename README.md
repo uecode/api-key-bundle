@@ -3,7 +3,7 @@ ApiKey Bundle
 
 Creates an avenue for using ApiKey authentication for Symfony2. Requires FOSUserBundle.
 
-## Installation
+# Installation
 
 Requires composer, install as follows
 
@@ -11,7 +11,7 @@ Requires composer, install as follows
 composer require uecode/api-key-bundle dev-master
 ```
 
-#### Enable Bundle
+## Enable Bundle
 
 Place in your `AppKernel.php` to enable the bundle
 
@@ -36,6 +36,15 @@ uecode_api_key:
     parameter_name: some_value # defaults to `api_key`
 ```
 
+### Update user provider
+
+This bundle provides two ways to work with User model:
+
+1. use model and user provider provided by this bundle
+2. use custom user provider
+
+### Use model provided by this bundle
+
 #### Entities
 
 Assuming you already have a `User` class that extends the `FOSUserBundle`'s base user model,
@@ -43,7 +52,7 @@ change that extend, so its extending `Uecode\Bundle\ApiKeyBundle\Model\ApiKeyUse
 
 Then update your schema.
 
-#### Set up security
+#### Change used user provider
 
 In your security, change your provider to the service `uecode.api_key.provider.user_provider`
 
@@ -64,7 +73,30 @@ security:
             id: uecode.api_key.provider.user_provider
 ```
 
-After adding that, you can now add `api_key: true`, and `stateless: true` to any of your firewalls. 
+
+### Use custom user provider
+
+To work with this bundle your user provider should implement ```ApiKeyUserProviderInterface```.
+It consist of one method for loading user by their apiKey.
+You should implement this interface for user provider which used in your api firewall:
+
+```php
+use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\ApiKeyUserProviderInterface;
+
+class MyCustomUserProvider implements ApiKeyUserProviderInterface {
+// ...
+
+public function loadUserByApiKey($apiKey)
+{
+    return $this->userManager->findUserBy(array('apiKey' => $apiKey));
+}
+
+}
+```
+
+## Change security settings
+
+You can now add `api_key: true`, and `stateless: true` to any of your firewalls. 
 
 For Example:
 
