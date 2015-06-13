@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\User\ChainUserProvider;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use FOS\UserBundle\Model\UserInterface;
 use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
+use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\ApiKeyUserProviderInterface;
 
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
@@ -58,9 +59,9 @@ class ApiKeyProvider implements AuthenticationProviderInterface
      * @return bool|ApiKeyUserToken
      * @throws AuthenticationException
      */
-    protected function doAuth(UserProviderInterface $provider, TokenInterface $token)
+    protected function doAuth($provider, TokenInterface $token)
     {
-        if (!method_exists($provider, 'loadUserByApiKey')) {
+        if (! $provider instanceof ApiKeyUserProviderInterface) {
             return false;
         }
 
