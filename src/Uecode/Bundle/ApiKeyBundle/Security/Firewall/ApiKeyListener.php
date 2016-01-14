@@ -19,17 +19,17 @@ class ApiKeyListener implements ListenerInterface
     /**
      * @var TokenStorageInterface
      */
-    protected $tokenStorage;
+    private $tokenStorage;
 
     /**
      * @var AuthenticationManagerInterface
      */
-    protected $authenticationManager;
+    private $authenticationManager;
 
     /**
      * @var KeyExtractor
      */
-    protected $keyExtractor;
+    private $keyExtractor;
 
     public function __construct(TokenStorageInterface $tokenStorage, AuthenticationManagerInterface $manager, KeyExtractor $keyExtractor)
     {
