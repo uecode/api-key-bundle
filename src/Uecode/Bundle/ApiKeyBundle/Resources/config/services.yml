@@ -9,13 +9,13 @@ parameters:
 services:
     uecode.api_key.provider.user_provider:
         class: %uecode.api_key.provider.user_provider.class%
-        arguments: [@fos_user.user_manager]
+        arguments: ["@fos_user.user_manager"]
     uecode.api_key.provider.api_key:
         class: %uecode.api_key.provider.api_key.class%
         arguments: [""]
     uecode.api_key.listener.api_key:
         class: %uecode.api_key.listener.api_key.class%
-        arguments: [@security.context, @security.authentication.manager, @uecode.api_key.extractor]
+        arguments: ["@security.context", "@security.authentication.manager", "@uecode.api_key.extractor"]
 
     uecode.api_key.extractor.query:
         class: %uecode.api_key.extractor.query.class%
