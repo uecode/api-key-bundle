@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
 use Uecode\Bundle\ApiKeyBundle\Extractor\KeyExtractor;
@@ -17,23 +17,23 @@ use Uecode\Bundle\ApiKeyBundle\Extractor\KeyExtractor;
 class ApiKeyListener implements ListenerInterface
 {
     /**
-     * @var SecurityContextInterface
+     * @var TokenStorageInterface
      */
-    protected $securityContext;
+    private $tokenStorage;
 
     /**
      * @var AuthenticationManagerInterface
      */
-    protected $authenticationManager;
+    private $authenticationManager;
 
     /**
      * @var KeyExtractor
      */
-    protected $keyExtractor;
+    private $keyExtractor;
 
-    public function __construct(SecurityContextInterface $context, AuthenticationManagerInterface $manager, KeyExtractor $keyExtractor)
+    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationManagerInterface $manager, KeyExtractor $keyExtractor)
     {
-        $this->securityContext       = $context;
+        $this->tokenStorage          = $tokenStorage;
         $this->authenticationManager = $manager;
         $this->keyExtractor          = $keyExtractor;
     }
@@ -61,13 +61,13 @@ class ApiKeyListener implements ListenerInterface
 
         try {
             $authToken = $this->authenticationManager->authenticate($token);
-            $this->securityContext->setToken($authToken);
+            $this->tokenStorage->setToken($authToken);
 
             return;
         } catch (AuthenticationException $failed) {
-            $token = $this->securityContext->getToken();
+            $token = $this->tokenStorage->getToken();
             if ($token instanceof ApiKeyUserToken && $token->getCredentials() == $apiKey) {
-                $this->securityContext->setToken(null);
+                $this->tokenStorage->setToken(null);
             }
 
             $message = $failed->getMessage();
