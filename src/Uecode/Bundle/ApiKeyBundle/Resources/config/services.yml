@@ -15,7 +15,7 @@ services:
         arguments: [""]
     uecode.api_key.listener.api_key:
         class: %uecode.api_key.listener.api_key.class%
-        arguments: ["@security.context", "@security.authentication.manager", "@uecode.api_key.extractor"]
+        arguments: ["@security.token_storage", "@security.authentication.manager", "@uecode.api_key.extractor"]
 
     uecode.api_key.extractor.query:
         class: %uecode.api_key.extractor.query.class%
