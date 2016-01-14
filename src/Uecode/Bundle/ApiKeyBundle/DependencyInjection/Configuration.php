@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('delivery')
                     ->defaultValue('query')
                     ->validate()
-                        ->ifNotInArray(array('query', 'header'))
+                        ->ifNotInArray(array('query', 'request', 'queryorrequest', 'header'))
                         ->thenInvalid('Unknown authentication delivery type "%s".')
                      ->end()
                  ->end()

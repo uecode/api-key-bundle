@@ -1,12 +1,14 @@
 parameters:
-    uecode.api_key.provider.user_provider.class: Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\UserProvider
-    uecode.api_key.provider.api_key.class:       Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\ApiKeyProvider
-    uecode.api_key.listener.api_key.class:       Uecode\Bundle\ApiKeyBundle\Security\Firewall\ApiKeyListener
+    uecode.api_key.provider.user_provider.class:    Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\UserProvider
+    uecode.api_key.provider.api_key.class:          Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\ApiKeyProvider
+    uecode.api_key.listener.api_key.class:          Uecode\Bundle\ApiKeyBundle\Security\Firewall\ApiKeyListener
 
-    uecode.api_key.extractor.query.class:        Uecode\Bundle\ApiKeyBundle\Extractor\QueryExtractor
-    uecode.api_key.extractor.header.class:       Uecode\Bundle\ApiKeyBundle\Extractor\HeaderExtractor
+    uecode.api_key.extractor.query.class:           Uecode\Bundle\ApiKeyBundle\Extractor\QueryExtractor
+    uecode.api_key.extractor.request.class:         Uecode\Bundle\ApiKeyBundle\Extractor\RequestExtractor
+    uecode.api_key.extractor.queryorrequest.class:  Uecode\Bundle\ApiKeyBundle\Extractor\QueryOrRequestExtractor
+    uecode.api_key.extractor.header.class:          Uecode\Bundle\ApiKeyBundle\Extractor\HeaderExtractor
     
-    uecode.api_key.generator.class:              Uecode\Bundle\ApiKeyBundle\Util\ApiKeyGenerator
+    uecode.api_key.generator.class:                 Uecode\Bundle\ApiKeyBundle\Util\ApiKeyGenerator
     
 services:
     uecode.api_key.provider.user_provider:
@@ -21,6 +23,14 @@ services:
 
     uecode.api_key.extractor.query:
         class: %uecode.api_key.extractor.query.class%
+        arguments: [%uecode.api_key.parameter_name%]
+        public: false
+    uecode.api_key.extractor.request:
+        class: %uecode.api_key.extractor.request.class%
+        arguments: [%uecode.api_key.parameter_name%]
+        public: false
+    uecode.api_key.extractor.queryorrequest:
+        class: %uecode.api_key.extractor.queryorrequest.class%
         arguments: [%uecode.api_key.parameter_name%]
         public: false
     uecode.api_key.extractor.header:
