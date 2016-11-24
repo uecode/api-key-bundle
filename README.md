@@ -54,13 +54,17 @@ Then update your schema.
 
 #### Change used user provider
 
-In your security, change your provider to the service `uecode.api_key.provider.user_provider`
+In your security, change your provider to the service `uecode.api_key.provider.user_provider` or
+`uecode.api_key.provider.email_user_provider` if you use logging in by email instead of username
+ie. using fos_user.user_provider.username_email instead of fos_user.user_provider.username
+(see https://symfony.com/doc/current/bundles/FOSUserBundle/logging_by_username_or_email.html)
 
 ```yml
 security:
     providers:
         db:
             id: uecode.api_key.provider.user_provider
+    # Or    id: uecode.api_key.provider.user_email_provider
 
     # Or
 
@@ -71,6 +75,7 @@ security:
         memory: # .....
         db:
             id: uecode.api_key.provider.user_provider
+    # Or    id: uecode.api_key.provider.user_email_provider
 ```
 
 
