@@ -48,9 +48,6 @@ class ApiKeyListener implements ListenerInterface
         $request = $event->getRequest();
 
         if (!$this->keyExtractor->hasKey($request)) {
-            $response = new Response();
-            $response->setStatusCode(401);
-            $event->setResponse($response);
             return ;
         }
 
