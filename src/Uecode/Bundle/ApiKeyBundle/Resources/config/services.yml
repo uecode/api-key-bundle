@@ -11,26 +11,26 @@ parameters:
     
 services:
     uecode.api_key.provider.user_provider:
-        class: %uecode.api_key.provider.user_provider.class%
+        class: "%uecode.api_key.provider.user_provider.class%"
         arguments: ["@fos_user.user_manager"]
     uecode.api_key.provider.email_user_provider:
-        class: %uecode.api_key.provider.email_user_provider.class%
+        class: "%uecode.api_key.provider.email_user_provider.class%"
         arguments: ["@fos_user.user_manager"]
     uecode.api_key.provider.api_key:
-        class: %uecode.api_key.provider.api_key.class%
+        class: "%uecode.api_key.provider.api_key.class%"
         arguments: [""]
     uecode.api_key.listener.api_key:
-        class: %uecode.api_key.listener.api_key.class%
+        class: "%uecode.api_key.listener.api_key.class%"
         arguments: ["@security.token_storage", "@security.authentication.manager", "@uecode.api_key.extractor"]
 
     uecode.api_key.extractor.query:
-        class: %uecode.api_key.extractor.query.class%
+        class: "%uecode.api_key.extractor.query.class%"
         arguments: [%uecode.api_key.parameter_name%]
         public: false
     uecode.api_key.extractor.header:
-        class: %uecode.api_key.extractor.header.class%
+        class: "%uecode.api_key.extractor.header.class%"
         arguments: [%uecode.api_key.parameter_name%]
         public: false
     uecode.api_key.generator:
-        class: %uecode.api_key.generator.class%
+        class: "%uecode.api_key.generator.class%"
         public: false
