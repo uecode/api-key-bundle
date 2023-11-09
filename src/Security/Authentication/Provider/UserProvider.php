@@ -15,9 +15,6 @@ class UserProvider extends FOSUserProvider implements ApiKeyUserProviderInterfac
      */
     private $stateless = false;
 
-    /**
-     * {@inheritdoc}
-     */
     public function loadUserByApiKey($apiKey)
     {
         $this->stateless = true;
