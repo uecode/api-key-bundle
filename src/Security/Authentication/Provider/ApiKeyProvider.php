@@ -15,10 +15,7 @@ use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
  */
 class ApiKeyProvider implements AuthenticationProviderInterface
 {
-    /**
-     * @var UserProviderInterface
-     */
-    protected $userProvider;
+    private UserProviderInterface $userProvider;
 
     public function __construct(UserProviderInterface $userProvider)
     {
@@ -30,7 +27,7 @@ class ApiKeyProvider implements AuthenticationProviderInterface
      *
      * @param TokenInterface $token The TokenInterface instance to authenticate
      *
-     * @return TokenInterface An authenticated TokenInterface instance, never null
+     * @return TokenInterface|null An authenticated TokenInterface instance, never null
      *
      * @throws AuthenticationException if the authentication fails
      */
@@ -49,6 +46,8 @@ class ApiKeyProvider implements AuthenticationProviderInterface
                 return $result;
             }
         }
+
+        return null;
     }
 
     /**

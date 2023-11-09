@@ -4,7 +4,8 @@
     "license": "Apache 2.0",
     "require": {
         "php": "^7.4|^8.0",
-        "symfony/symfony": "^3.0|^4.0",
+        "symfony/dependency-injection": "^3.4",
+        "symfony/config": "^3.4",
         "friendsofsymfony/user-bundle": "^2.0"
     },
     "autoload": {
@@ -17,5 +18,8 @@
             "name": "Aaron Scherer",
             "email": "aequasi@gmail.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
+    }
 }
