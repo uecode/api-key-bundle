@@ -1,14 +1,14 @@
 <?php
 namespace Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider;
 
-use FOS\UserBundle\Security\UserProvider AS FOSUserProvider;
+use FOS\UserBundle\Security\EmailUserProvider as FOSUserProvider;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
  */
-class UserProvider extends FOSUserProvider implements ApiKeyUserProviderInterface
+class EmailUserProvider extends FOSUserProvider implements ApiKeyUserProviderInterface
 {
     /**
      * @var bool Stateless Authentication?

@@ -23,7 +23,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
+        new \Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
     );
 }
 ```

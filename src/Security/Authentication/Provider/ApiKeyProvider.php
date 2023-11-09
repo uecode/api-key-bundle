@@ -2,14 +2,13 @@
 
 namespace Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider;
 
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\ChainUserProvider;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use FOS\UserBundle\Model\UserInterface;
 use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
-use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider\ApiKeyUserProviderInterface;
 
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
