@@ -5,7 +5,9 @@
     "require": {
         "php": "^7.4|^8.0",
         "symfony/dependency-injection": "^3.4",
-        "symfony/config": "^3.4",
+        "symfony/config": "^3.4|^4.0",
+        "symfony/http-foundation": "^3.4|^4.0",
+        "symfony/security-core": "^3.4|^4.0",
         "friendsofsymfony/user-bundle": "^2.0"
     },
     "autoload": {
