@@ -1,7 +1,7 @@
 <?php
 namespace Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider;
 
-use FOS\UserBundle\Security\EmailUserProvider AS FOSUserProvider;
+use FOS\UserBundle\Security\EmailUserProvider as FOSUserProvider;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 

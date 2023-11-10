@@ -3,13 +3,16 @@
     "description": "Creates an avenue for using ApiKey authentication for Symfony2. Requires FOSUserBundle.",
     "license": "Apache 2.0",
     "require": {
-        "php": "^5.3|^7.0",
-        "symfony/symfony": "^2.3|^3.0",
-        "friendsofsymfony/user-bundle": "^1|~2.0@dev"
+        "php": "^7.4|^8.0",
+        "symfony/dependency-injection": "^3.4",
+        "symfony/config": "^3.4|^4.0",
+        "symfony/http-foundation": "^3.4|^4.0",
+        "symfony/security-core": "^3.4|^4.0",
+        "friendsofsymfony/user-bundle": "^2.0"
     },
     "autoload": {
-        "psr-0": {
-            "Uecode\\Bundle\\ApiKeyBundle": "src/"
+        "psr-4": {
+            "Uecode\\Bundle\\ApiKeyBundle\\": "src"
         }
     },
     "authors": [
@@ -17,5 +20,8 @@
             "name": "Aaron Scherer",
             "email": "aequasi@gmail.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
+    }
 }

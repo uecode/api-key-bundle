@@ -1,7 +1,7 @@
 <?php
 namespace Uecode\Bundle\ApiKeyBundle\Security\Authentication\Provider;
 
-use FOS\UserBundle\Security\UserProvider AS FOSUserProvider;
+use FOS\UserBundle\Security\UserProvider as FOSUserProvider;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
@@ -15,9 +15,6 @@ class UserProvider extends FOSUserProvider implements ApiKeyUserProviderInterfac
      */
     private $stateless = false;
 
-    /**
-     * {@inheritdoc}
-     */
     public function loadUserByApiKey($apiKey)
     {
         $this->stateless = true;

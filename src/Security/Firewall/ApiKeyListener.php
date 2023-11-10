@@ -5,11 +5,11 @@ namespace Uecode\Bundle\ApiKeyBundle\Security\Firewall;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
-use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
 use Uecode\Bundle\ApiKeyBundle\Extractor\KeyExtractor;
+use Uecode\Bundle\ApiKeyBundle\Security\Authentication\Token\ApiKeyUserToken;
 
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
